@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ash Ketchum · Historia y Pokémon</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{--accent:#ef4444;--dark:#0b1020}
+    body{background:linear-gradient(180deg,#f7fbff 0%,#e8f0ff 100%);color:var(--dark);font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    .hero{min-height:60vh;display:flex;align-items:center}
+    .hero-image{max-width:300px;filter:drop-shadow(0 8px 24px rgba(15,23,42,0.12))}
+    .pokeball{width:84px;height:84px;border-radius:50%;background:linear-gradient(#fff,#eee);border:6px solid #222;position:relative;box-shadow:0 6px 18px rgba(15,23,42,0.12);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:transform .18s ease;overflow:hidden}
+    .pokeball::before{content:'';position:absolute;left:0;right:0;top:46%;height:12px;background:#000;transform:translateY(-50%)}
+    .pokeball::after{content:'';width:30px;height:30px;border-radius:50%;background:#fff;border:6px solid #222;position:absolute}
+    .pokeball:hover{transform:translateY(-6px) scale(1.03)}
+    .poke-grid{display:flex;gap:12px;flex-wrap:wrap}
+    .poke-label{font-weight:600;font-size:.85rem;margin-top:.35rem;text-align:center}
+    .season-card{background:rgba(255,255,255,0.85);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(11,16,32,0.06)}
+    .bounce{animation:bounce .9s ease}
+    @keyframes bounce{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+    .pixel-gallery img{max-width:120px;height:auto;margin:6px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+    footer{padding:18px 0;text-align:center;color:#555}
+    @media (max-width:576px){.pokeball{width:64px;height:64px}}
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Pokémon · Ash</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#historia">Historia</a></li>
+          <li class="nav-item"><a class="nav-link" href="#equipos">Pokémon por temporada</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pixel">Juego (pixeles)</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center flex-row-reverse">
+        <div class="col-md-6">
+          <h1 class="display-6">Ash Ketchum — Historia y sus Pokémon</h1>
+          <p class="lead">Breve presentación de Ash Ketchum y un recorrido interactivo por los Pokémon que ha acompañado por temporada. Las imágenes de las criaturas y las descripciones se obtienen desde la PokeAPI.</p>
+          <a href="#equipos" class="btn btn-primary">Ver equipos por temporada</a>
+        <div class="col-md-6 text-center">
+          <img src="https://raw.githubusercontent.com/ivana-placeholder/ash/master/ash-portrait.png" alt="Ash Ketchum" class="img-fluid hero-image">
+        </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <section id="historia" class="mb-5">
+      <div class="season-card">
+        <h3>Cómo inició Pokémon — (resumen)</h3>
+        <p>Ash Ketchum, conocido en Japón como Satoshi, comenzó su viaje como entrenador al cumplir 10 años. Su objetivo fue convertirse en Maestro Pokémon, viajando por distintas regiones, compitiendo en gimnasios y formando vínculos con sus Pokémon. Esta página presenta su historia de manera resumida y accesible, junto con los Pokémon que lo acompañaron por temporada.</p>
+      </div>
+    </section>
+
+    <section id="ash_pokemons" class="mb-5">
+  <h4>Pokémon de Ash por temporadas</h4>
+  <div class="mt-3 d-flex flex-column gap-3">
+    <div class='season-card p-3'><h5>Temporada 1</h5><div class='poke-grid' data-season='1'></div></div>
+    <div class='season-card p-3'><h5>Temporada 2</h5><div class='poke-grid' data-season='2'></div></div>
+    <div class='season-card p-3'><h5>Temporada 3</h5><div class='poke-grid' data-season='3'></div></div>
+    <div class='season-card p-3'><h5>Temporada 4</h5><div class='poke-grid' data-season='4'></div></div>
+    <div class='season-card p-3'><h5>Temporada 5</h5><div class='poke-grid' data-season='5'></div></div>
+    <div class='season-card p-3'><h5>Temporada 6</h5><div class='poke-grid' data-season='6'></div></div>
+    <div class='season-card p-3'><h5>Temporada 7</h5><div class='poke-grid' data-season='7'></div></div>
+    <div class='season-card p-3'><h5>Temporada 8</h5><div class='poke-grid' data-season='8'></div></div>
+    <div class='season-card p-3'><h5>Temporada 9</h5><div class='poke-grid' data-season='9'></div></div>
+    <div class='season-card p-3'><h5>Temporada 10</h5><div class='poke-grid' data-season='10'></div></div>
+    <div class='season-card p-3'><h5>Temporada 11</h5><div class='poke-grid' data-season='11'></div></div>
+    <div class='season-card p-3'><h5>Temporada 12</h5><div class='poke-grid' data-season='12'></div></div>
+    <div class='season-card p-3'><h5>Temporada 13</h5><div class='poke-grid' data-season='13'></div></div>
+    <div class='season-card p-3'><h5>Temporada 14</h5><div class='poke-grid' data-season='14'></div></div>
+    <div class='season-card p-3'><h5>Temporada 15</h5><div class='poke-grid' data-season='15'></div></div>
+    <div class='season-card p-3'><h5>Temporada 16</h5><div class='poke-grid' data-season='16'></div></div>
+    <div class='season-card p-3'><h5>Temporada 17</h5><div class='poke-grid' data-season='17'></div></div>
+    <div class='season-card p-3'><h5>Temporada 18</h5><div class='poke-grid' data-season='18'></div></div>
+    <div class='season-card p-3'><h5>Temporada 19</h5><div class='poke-grid' data-season='19'></div></div>
+    <div class='season-card p-3'><h5>Temporada 20</h5><div class='poke-grid' data-season='20'></div></div>
+    <div class='season-card p-3'><h5>Temporada 21</h5><div class='poke-grid' data-season='21'></div></div>
+    <div class='season-card p-3'><h5>Temporada 22</h5><div class='poke-grid' data-season='22'></div></div>
+    <div class='season-card p-3'><h5>Temporada 23</h5><div class='poke-grid' data-season='23'></div></div>
+    <div class='season-card p-3'><h5>Temporada 24</h5><div class='poke-grid' data-season='24'></div></div>
+    <div class='season-card p-3'><h5>Temporada 25</h5><div class='poke-grid' data-season='25'></div></div>
+  </div>
+</section>
+
+<section id="equipos" class="mb-4">
+      <h4>Pokémon de Ash por temporada</h4>
+      <p class="text-muted">Haga clic en una pokebola para ver la ficha y descripción oficial (PokeAPI).</p>
+
+      <div id="seasons" class="mt-3">
+        <!-- Las temporadas se cargan por JS -->
+      </div>
+    </section>
+
+    <section id="regiones" class="mb-5">
+      <h4>Regiones visitadas por Ash</h4>
+      <div class="season-card mt-3">
+        <ul class="mb-0">
+          <li>Kanto: inicio de su viaje como entrenador.</li>
+          <li>Johto: desarrollo de su estilo competitivo.</li>
+          <li>Hoenn: nuevas estrategias y ampliación de su equipo.</li>
+          <li>Sinnoh: crecimiento táctico y batallas destacadas.</li>
+          <li>Unova: adaptación a reglas y dinámicas distintas.</li>
+          <li>Kalos: una de sus temporadas más fuertes.</li>
+          <li>Alola: enfoque escolar y victoria en la Liga.</li>
+          <li>Galar: formato competitivo moderno.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Temporadas de la 1 a la 25 (resumidas y juntas) -->
+    <section id="all-seasons" class="container py-4">
+      <h2 class="text-center mb-4">Temporadas 1 - 25 (Resumen)</h2>
+      <!-- Este bloque contiene pokeballs con atributo data-name o data-pokemon según el origen. -->
+      <div class="season-card">
+        <div class="poke-grid" id="all-pokeballs">
+          <!-- Los pokeballs se generan por JS desde el array `allSeasons` -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Línea temporal de Ash -->
+    <section class="container py-5">
+      <h2 class="text-center mb-4">Línea Temporal de Ash</h2>
+      <ul>
+        <li>Kanto: inicio del viaje.</li>
+        <li>Johto: fortalecimiento estratégico.</li>
+        <li>Hoenn: nuevas alianzas.</li>
+        <li>Sinnoh: batallas destacadas.</li>
+        <li>Unova: reinicio competitivo.</li>
+        <li>Kalos: una de sus etapas más fuertes.</li>
+        <li>Alola: Campeón de Liga.</li>
+        <li>Journeys: Campeón Mundial.</li>
+      </ul>
+    </section>
+
+    <!-- Medallas y logros -->
+    <section class="container py-5">
+      <h2 class="text-center mb-4">Medallas y Ligas Ganadas</h2>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <!-- Ejemplos de imágenes de medallas si están disponibles -->
+        <img src="assets/medal_kanto.png" alt="Medallas Kanto" style="max-width:80px;" onerror="this.style.display='none'">
+        <img src="assets/medal_johto.png" alt="Medallas Johto" style="max-width:80px;" onerror="this.style.display='none'">
+        <img src="assets/medal_sinnoh.png" alt="Medallas Sinnoh" style="max-width:80px;" onerror="this.style.display='none'">
+        <img src="assets/medal_alola.png" alt="Medallas Alola" style="max-width:80px;" onerror="this.style.display='none'">
+      </div>
+      <ul class="mt-3">
+        <li>Liga Naranja</li>
+        <li>Frontera de Batalla (insignias conquistadas)</li>
+        <li>Liga Alola (Campeón)</li>
+        <li>Torneo de los Ocho Maestros – Campeón Mundial</li>
+      </ul>
+    </section>
+
+    <section id="mi-historia" class="mb-5">
+      <h4>Mi historia con Pokémon</h4>
+      <p>Aquí puedes escribir tu experiencia personal con la franquicia, cómo conociste Pokémon y qué significado tiene para ti.</p>
+      <textarea id="mi-historia-input" class="form-control" rows="6" placeholder="Escribe tu historia aquí..."></textarea>
+      <button id="guardar-historia" class="btn btn-secondary mt-2">Guardar historia</button>
+      <div id="mi-historia-display" class="mt-3"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>Diseño basado en estética informativa. Datos y sprites: PokeAPI.</small>
+    </div>
+  </footer>
+
+  <!-- Modal: muestra detalle del Pokémon -->
+  <div class="modal fade" id="pokeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="pokeTitle" class="modal-title">Nombre</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body d-flex gap-4 flex-column flex-md-row">
+          <div style="min-width:220px;text-align:center">
+            <img id="pokeImage" src="" alt="" class="img-fluid" style="max-height:240px;">
+            <div class="mt-2 text-muted" id="pokeNumber"></div>
+          </div>
+          <div>
+            <h6>Descripción</h6>
+            <p id="pokeDesc">Cargando descripción...</p>
+            <h6>Tipos</h6>
+            <div id="pokeTypes" class="mb-2"></div>
+            <h6>Habilidades</h6>
+            <div id="pokeAbilities"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Consolidado: temporadas 1-25 (ejemplo resumido). Nombres para consultar PokeAPI deben ser válidos.
+    const allSeasons = [
+      {season:1, pokemon:['pikachu','caterpie','pidgeotto','butterfree','bulbasaur','squirtle','charmander']},
+      {season:2, pokemon:['bayleef','totodile','noctowl','snorlax','cyndaquil']},
+      {season:3, pokemon:['taillow','corphish','torkoal','glalie','sceptile']},
+      {season:4, pokemon:['starly','turtwig','chimchar','gible','buizel','staraptor']},
+      {season:5, pokemon:['oshawott','tepig','snivy','swadloon','palpitoad','krookodile']},
+      {season:6, pokemon:['taillow','treecko','corphish','torkoal','snorunt']},
+      {season:7, pokemon:['swellow','grovyle','glalie']},
+      {season:8, pokemon:['sceptile']},
+      {season:9, pokemon:['aipom']},
+      {season:10, pokemon:['starly','turtwig','chimchar','buizel','gligar']},
+      {season:11, pokemon:['staravia','grotle','gliscor']},
+      {season:12, pokemon:['infernape','staraptor']},
+      {season:13, pokemon:['torterra']},
+      {season:14, pokemon:['oshawott','tepig','snivy','pidove','scraggy']},
+      {season:15, pokemon:['emboar','unfezant','palpitoad']},
+      {season:16, pokemon:['leavanny','boldore','krookodile']},
+      {season:17, pokemon:['froakie','fletchling','hawlucha','noibat']},
+      {season:18, pokemon:['frogadier','talonflame']},
+      {season:19, pokemon:['greninja','noivern']},
+      {season:20, pokemon:['rowlet','litten','poipole','lycanroc','melmetal']},
+      {season:21, pokemon:[]},
+      {season:22, pokemon:[]},
+      {season:23, pokemon:['dragonite','gengar','lucario','dracovish','sirfetchd']},
+      {season:24, pokemon:[]},
+      {season:25, pokemon:[]}
+    ];
+
+    const allContainer = document.getElementById('all-pokeballs');
+
+    // Utility: safely capitalize strings
+    function capitalize(s){
+      if(typeof s !== 'string' || s.length === 0) return '';
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    // Devuelve nombre de pokémon desde atributos data-name o data-pokemon
+    function getDataName(el){
+      if(!el) return '';
+      return el.dataset.name || el.dataset.pokemon || '';
+    }
+
+    // Generar todas las pokeballs en un único bloque
+    function renderAllSeasons(){
+      allSeasons.forEach(se => {
+        se.pokemon.forEach(name => {
+          const wrap = document.createElement('div');
+          wrap.className = 'text-center me-2 mb-2';
+          // usar data-name para las generadas dinámicamente
+          wrap.innerHTML = `<div class="pokeball" data-name="${name}" title="${name}"></div>
+                            <div class="poke-label">${capitalize(name)}</div>`;
+          allContainer.appendChild(wrap);
+        });
+      });
+    }
+
+    renderAllSeasons();
+
+    // Evento de click: busca la pokeball más cercana y obtiene nombre seguro
+    document.addEventListener('click', async (e) =>{
+      const ball = e.target.closest('.pokeball');
+      if(!ball) return;
+      ball.classList.add('bounce');
+      setTimeout(()=>ball.classList.remove('bounce'),700);
+
+      const name = getDataName(ball);
+      if(!name){
+        // nombre indefinido: evitar llamadas y mostrar modal informativo
+        showErrorModal('Nombre de Pokémon indefinido.');
+        return;
+      }
+      await showPokemon(name);
+    });
+
+    // Muestra modal de error sencillo
+    function showErrorModal(message){
+      const title = document.getElementById('pokeTitle');
+      const desc = document.getElementById('pokeDesc');
+      const img = document.getElementById('pokeImage');
+      title.textContent = 'Error';
+      desc.textContent = message;
+      img.src = '';
+      const modal = new bootstrap.Modal(document.getElementById('pokeModal'));
+      modal.show();
+    }
+
+    // Función para mostrar modal con datos de PokeAPI
+    async function showPokemon(name){
+      const modalEl = document.getElementById('pokeModal');
+      const modal = new bootstrap.Modal(modalEl);
+      const title = document.getElementById('pokeTitle');
+      const img = document.getElementById('pokeImage');
+      const number = document.getElementById('pokeNumber');
+      const desc = document.getElementById('pokeDesc');
+      const typesEl = document.getElementById('pokeTypes');
+      const abilitiesEl = document.getElementById('pokeAbilities');
+
+      title.textContent = capitalize(name);
+      img.src = '';
+      desc.textContent = 'Cargando...';
+      typesEl.innerHTML=''; abilitiesEl.innerHTML=''; number.textContent='';
+
+      try{
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        if(!res.ok) throw new Error('No encontrado');
+        const data = await res.json();
+        const sp = await fetch(data.species.url);
+        const sdata = await sp.json();
+        let flavor = (sdata.flavor_text_entries || []).find(e => e.language && e.language.name === 'es') || (sdata.flavor_text_entries || []).find(e => e.language && e.language.name === 'en');
+        flavor = flavor && flavor.flavor_text ? flavor.flavor_text.replace(/\n|\f/g,' ') : 'Descripción no disponible.';
+
+        title.textContent = capitalize(data.name || name);
+        img.src = (data.sprites && (data.sprites.other && data.sprites.other['official-artwork'] && data.sprites.other['official-artwork'].front_default)) || data.sprites.front_default || '';
+        number.textContent = data.id ? `#${String(data.id).padStart(3,'0')}` : '';
+        desc.textContent = flavor;
+        typesEl.innerHTML = (data.types || []).map(t=>`<span class="badge bg-secondary me-1">${capitalize(t.type.name)}</span>`).join('');
+        abilitiesEl.innerHTML = (data.abilities || []).map(a=>`<div>${capitalize(a.ability.name)} ${a.is_hidden?'<small class="text-muted">(oculta)</small>':''}</div>`).join('');
+
+        // Actualizar solo si existe contenedor (evitar errores si fue removido)
+        const cardContainer = document.getElementById('card-container');
+        if(data.name === 'pikachu' && cardContainer){
+          cardContainer.innerHTML = '<div class="card mt-3"><div class="card-body">Pikachu de Ash: icónico compañero.</div></div>';
+        }
+
+        modal.show();
+      }catch(err){
+        title.textContent = capitalize(name) || 'No encontrado';
+        desc.textContent = 'No fue posible obtener la ficha desde PokeAPI.';
+        img.src = '';
+        modal.show();
+      }
+    }
+
+    // Precarga: buscar pokeballs tanto con data-name como data-pokemon y añadir miniatura/numero
+    (async function preload(){
+      // crear una lista única de nombres desde allSeasons
+      const names = new Set();
+      allSeasons.forEach(s=> s.pokemon.forEach(p=> names.add(p)));
+
+      for(const name of names){
+        try{
+          const r = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+          if(!r.ok) continue;
+          const d = await r.json();
+          // seleccionar elementos que tengan data-name o data-pokemon
+          const selector = `.pokeball[data-name='${name}'], .pokeball[data-pokemon='${name}']`;
+          const els = document.querySelectorAll(selector);
+          els.forEach(el => {
+            // evitar duplicar si ya añadimos
+            if(el.querySelector('img')) return;
+            const img = document.createElement('img');
+            img.src = d.sprites.front_default || (d.sprites.other && d.sprites.other['official-artwork'] && d.sprites.other['official-artwork'].front_default) || '';
+            img.alt = name;
+            img.style.width='60%'; img.style.position='relative'; img.style.zIndex='2'; img.style.pointerEvents='none';
+            el.appendChild(img);
+            const num = document.createElement('div');
+            num.style.position='absolute'; num.style.bottom='6px'; num.style.right='6px'; num.style.fontSize='11px'; num.style.color='#222'; num.style.background='rgba(255,255,255,0.8)'; num.style.padding='2px 6px'; num.style.borderRadius='12px';
+            num.textContent = `#${d.id}`;
+            el.appendChild(num);
+          });
+        }catch(e){/* silencioso */}
+      }
+    })();
+
+    // Guardar la historia de usuario localmente (ejemplo simple)
+    document.getElementById('guardar-historia').addEventListener('click', ()=>{
+      const text = document.getElementById('mi-historia-input').value.trim();
+      if(!text) return alert('Escriba su historia antes de guardar.');
+      document.getElementById('mi-historia-display').innerText = text;
+      // opcional: guardar en localStorage
+      try{ localStorage.setItem('mi_historia_pokemon', text); }catch(e){}
+    });
+
+    // Cargar historia si existe
+    (function loadHistoria(){
+      try{
+        const saved = localStorage.getItem('mi_historia_pokemon');
+        if(saved) document.getElementById('mi-historia-display').innerText = saved;
+      }catch(e){}
+    })();
+
+  </script>
+</body>
+</html>
