@@ -240,9 +240,9 @@
           <h5 id="pokeTitle" class="modal-title">Nombre</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body d-flex gap-4 flex-column flex-md-row">
-            <img id="pokeImage" src="" alt="" class="img-fluid poke-image">
-            <img id="pokeImage" src="" alt="" class="img-fluid poke-image-modal">
+          <div class="modal-body d-flex gap-4 flex-column flex-md-row">
+          <div style="min-width:220px;text-align:center">
+            <img id="pokeImage" src="" alt="" class="img-fluid" style="max-height:240px;">
             <div class="mt-2 text-muted" id="pokeNumber"></div>
           </div>
           <div>
@@ -438,10 +438,10 @@ renderSeasonsBlocks();
             const img = document.createElement('img');
             img.src = d.sprites.front_default || (d.sprites.other && d.sprites.other['official-artwork'] && d.sprites.other['official-artwork'].front_default) || '';
             img.alt = name;
-            img.className = 'poke-image-img';
+            img.style.width='60%'; img.style.position='relative'; img.style.zIndex='2'; img.style.pointerEvents='none';
             el.appendChild(img);
             const num = document.createElement('div');
-            num.className = 'poke-image-number';
+            num.style.position='absolute'; num.style.bottom='6px'; num.style.right='6px'; num.style.fontSize='11px'; num.style.color='#222'; num.style.background='rgba(255,255,255,0.8)'; num.style.padding='2px 6px'; num.style.borderRadius='12px';
             num.textContent = `#${d.id}`;
             el.appendChild(num);
           });
